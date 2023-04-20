@@ -558,7 +558,7 @@ function handlerPdfButton() {
                     </div>
                 </form>
             </div>
-            <InvoicePDF click={handlerPDFButton}/>
+            <InvoicePDF click={handlerPdfButton}/>
 
             <br />
             <br />
