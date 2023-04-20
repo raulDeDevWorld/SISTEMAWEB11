@@ -25,7 +25,7 @@ function Admin() {
 
                 <div className={style.grid}>
                     <Card img="/clipboard.svg" buttonText={"Administrar Clientes"} click={(e) => redirection("AdministrarClientes")} />
-                    <Card img="/delivery-truck.svg" buttonText={"Cotizacion LCL"} click={(e) => redirection("CotizacionLCL")} />
+                    <Card img="/delivery-truck.svg" buttonText={"Nota de Cobranza"} click={(e) => redirection("CotizacionLCL")} />
                     <Card img="/cargo-ship.svg" buttonText={"Cotizacion Maritima"} click={(e) => redirection("CotizacionMaritima")} />
                     <Card img="/box.svg" buttonText={"Cotizacion Terrestre"} click={(e) => redirection("CotizacionTerrestre")} />
                     <Card img="/airplane.svg" buttonText={"Cotizacion Aerea"} click={(e) => redirection("CotizacionAerea")} />
