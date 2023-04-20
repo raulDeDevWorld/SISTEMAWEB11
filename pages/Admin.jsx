@@ -27,7 +27,7 @@ function Admin() {
                     <Card img="/clipboard.svg" buttonText={"Administrar Clientes"} click={(e) => redirection("AdministrarClientes")} />
                     <Card img="/delivery-truck.svg" buttonText={"Nota de Cobranza"} click={(e) => redirection("CotizacionLCL")} />
                     <Card img="/cargo-ship.svg" buttonText={"Cotizacion Maritima"} click={(e) => redirection("CotizacionMaritima")} />
-                    <Card img="/box.svg" buttonText={"Cotizacion Terrestre"} click={(e) => redirection("CotizacionTerrestre")} />
+                    <Card img="/delivery-truck.svg" buttonText={"Cotizacion Terrestre"} click={(e) => redirection("CotizacionTerrestre")} />
                     <Card img="/airplane.svg" buttonText={"Cotizacion Aerea"} click={(e) => redirection("CotizacionAerea")} />
                     <Card img="/agreement.svg" buttonText={"Manifiesto De Carga"} click={(e) => redirection("ManifiestoDeCarga")} />
                 </div>
