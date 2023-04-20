@@ -166,7 +166,7 @@ function CotizacionMaritima() {
 function handlerPdfButton() {
         setUserPdfData({ ...pdfData, tarifa, otrosGastos, incluye, excluye })
         let object = {
-            CotizacionTerrestre: userDB.CotizacionMaritima ? userDB.CotizacionMaritima + 1 : 1
+            CotizacionMaritima: userDB.CotizacionMaritima ? userDB.CotizacionMaritima + 1 : 1
         }
         writeUserData('/', object, setUserSuccess)
     }
