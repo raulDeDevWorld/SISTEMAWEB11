@@ -85,6 +85,7 @@ setViewForm(false)
     }
 
     function handlerForm() {
+        viewForm == true && setItemSelect('')
         setViewForm(!viewForm)
     }
     function save(e) {
