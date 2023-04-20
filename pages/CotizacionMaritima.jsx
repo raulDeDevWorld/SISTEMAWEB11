@@ -208,8 +208,8 @@ function handlerPdfButton() {
 
         userDB !== '' && setUserPdfData({
             ...pdfData,
-            ["CT-COTIZACIÓN No"]: cotizacionNo,
-            ["CT-FECHA"]: date
+            ["CM-COTIZACION No"]: cotizacionNo,
+            ["CM-FECHA"]: date
         })
 
     }, [userDB, tarifa]);
@@ -238,7 +238,7 @@ function handlerPdfButton() {
                         <div className={style.firstItems}>
                             <div>
                                 <label htmlFor="">COTIZACIÓN No</label>
-                                <input type="text" name={"COTIZACIÓN No"} onChange={handleEventChange} defaultValue={pdfData["CM-COTIZACIÓN No"] && pdfData["CM-COTIZACIÓN No"]} />
+                                <input type="text" name={"COTIZACIÓN No"} onChange={handleEventChange} defaultValue={pdfData["CM-COTIZACION No"] && pdfData["CM-COTIZACION No"]} />
                             </div>
                             <div>
                                 <label htmlFor="">FECHA</label>
