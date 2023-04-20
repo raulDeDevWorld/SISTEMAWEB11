@@ -173,7 +173,7 @@ function CotizacionTerrestre() {
 function handlerPdfButton() {
         setUserPdfData({ ...pdfData, tarifa, otrosGastos, incluye, excluye })
         let object = {
-            CotizacionTerrestre: userDB.CotizacionAerea ? userDB.CotizacionAerea + 1 : 1
+            CotizacionAerea: userDB.CotizacionAerea ? userDB.CotizacionAerea + 1 : 1
         }
         writeUserData('/', object, setUserSuccess)
     }
