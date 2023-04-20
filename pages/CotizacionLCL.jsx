@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { useReducer, useState } from 'react'
+import {   useEffect, useState } from 'react'
 import { useUser } from '../context/Context'
 import { WithAuth } from '../HOCs/WithAuth'
 import Layout from '../layout/Layout'
 import Card from '../components/Card'
-import ReactPDF from '@react-pdf/renderer';
+import { getDayMonthYear } from "../utils/Fecha";
 import { writeUserData } from '../firebase/utils';
 
 
@@ -48,17 +48,49 @@ function CotizacionTerrestre() {
     function handlerCounter(word) {
         const newTarifa = tarifa.map(i => i)
         newTarifa.pop()
-        word == "pluss" ? setTarifa([...tarifa, ...[""]]) : setTarifa(newTarifa)
+        if (word == "pluss") {
+            setUserPdfData({ ...pdfData, tarifa: [...tarifa, ...[""]], otrosGastos, incluye, excluye })
+            setTarifa([...tarifa, ...[""]])
+        } else {
+            setUserPdfData({ ...pdfData, tarifa: newTarifa, otrosGastos, incluye, excluye })
+            setTarifa(newTarifa)
+        }
     }
     function handlerCounterTwo(word) {
-        const newTarifa = otrosGastos.map(i => i)
-        newTarifa.pop()
-        word == "pluss" ? setOtrosGastos([...otrosGastos, ...[""]]) : setOtrosGastos(newTarifa)
+        const newOtrosGastos = otrosGastos.map(i => i)
+        newOtrosGastos.pop()
+        if (word == "pluss") {
+            setUserPdfData({ ...pdfData, tarifa, otrosGastos: [...otrosGastos, ...[""]],  incluye, excluye })
+            setOtrosGastos([...otrosGastos, ...[""]])
+        } else {
+            setUserPdfData({ ...pdfData, tarifa, otrosGastos: newOtrosGastos, incluye, excluye })
+            setOtrosGastos(newOtrosGastos)
+        }
     }
     function handlerCounterThree(word) {
         const newIncluye = incluye.map(i => i)
         newIncluye.pop()
         word == "pluss" ? setIncluye([...incluye, ...[""]]) : setIncluye(newIncluye)
+
+        if (word == "pluss") {
+            setUserPdfData({ ...pdfData, tarifa, otrosGastos,  incluye: [...incluye, ...[""]], excluye })
+            setIncluye([...incluye, ...[""]])
+        } else {
+            setUserPdfData({ ...pdfData, tarifa,  otrosGastos, incluye: newIncluye, excluye })
+            setIncluye(newIncluye)
+        }
+    }
+    function handlerCounterFour(word) {
+        const newExcluye = excluye.map(i => i)
+        newExcluye.pop()
+        word == "pluss" ? setExcluye([...excluye, ...[""]]) : setExcluye(newExcluye)
+        if (word == "pluss") {
+            setUserPdfData({ ...pdfData, tarifa, otrosGastos,  incluye, excluye: [...excluye, ...[""]]})
+            setExcluye([...excluye, ...[""]])
+        } else {
+            setUserPdfData({ ...pdfData, tarifa,  otrosGastos, incluye, excluye: newExcluye })
+            setExcluye(newExcluye)
+        }
     }
 
     function handlerPdfButton() {
@@ -174,6 +206,19 @@ function CotizacionTerrestre() {
 
 
 
+    useEffect(() => {
+        let cotizacionNo = userDB.CotizacionTerrestre ? `${userDB.CotizacionTerrestre + 1 < 10 ? '00' : ''}${userDB.CotizacionTerrestre + 1 > 9 && userDB.CotizacionTerrestre + 1 < 100 ? '0' : ''}${userDB.CotizacionTerrestre + 1}/${new Date().getFullYear().toString().substring(2, 4)}` : `001/${new Date().getFullYear().toString().substring(2, 4)}`
+        let date = getDayMonthYear()
+
+        setUserPdfData({
+            ...pdfData,
+            ["NC-COTIZACIÓN No"]: cotizacionNo,
+            ["NC-FECHA"]: date
+        })
+
+    }, []);
+
+
     return (
         <Layout>
             <div className={style.container}>
@@ -192,11 +237,11 @@ function CotizacionTerrestre() {
                         <div className={style.firstItems}>
                             <div>
                                 <label htmlFor="">NOTA DE COBRANZA NO</label>
-                                <input type="text" name={"NOTA DE COBRANZA NO"} onChange={handleEventChange} />
+                                <input type="text" name={"NOTA DE COBRANZA NO"} onChange={handleEventChange} defaultValue={pdfData["NC-COTIZACIÓN No"] && pdfData["NC-COTIZACIÓN No"]}/>
                             </div>
                             <div>
                                 <label htmlFor="">FECHA</label>
-                                <input type="text" name={"FECHA"} onChange={handleEventChange} />
+                                <input type="text" name={"FECHA"} onChange={handleEventChange} defaultValue={pdfData["NC-FECHA"] && pdfData["NC-FECHA"]}/>
                             </div>
 
                         </div>

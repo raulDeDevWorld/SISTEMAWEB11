@@ -124,7 +124,6 @@ const styles = StyleSheet.create({
         color: "orange",
         fontSize: "8px",
         fontWeight: "100"
-
     },
 
     valueElaborador: {
@@ -157,7 +156,6 @@ const styles = StyleSheet.create({
         fontSize: "8px",
         fontWeight: "100",
         backgroundColor: "orange",
-
     },
     viewKeyValueTwo: {
         width: "100%",
@@ -372,9 +370,9 @@ const PDFView = ({click}) => {
 
 
                                         <Text style={styles.value}>{pdfData && pdfData[`CT-DETALLE${index}`] && pdfData[`CT-DETALLE${index}`]}</Text>
-                                        <Text style={styles.value}>{pdfData && pdfData[`FLETEUNITARIO${index}`] && pdfData[`FLETEUNITARIO${index}`]}</Text>
-                                        <Text style={styles.value}>{pdfData && pdfData[`CANTIDADFLETE${index}`] && pdfData[`CANTIDADFLETE${index}`]}</Text>
-                                        <Text style={styles.value}>{pdfData && pdfData[`PRODUCTFLETE${index}`] && pdfData[`PRODUCTFLETE${index}`]}</Text>
+                                        <Text style={styles.value}>{pdfData && pdfData[`COSTOUNITARIO${index}`] && pdfData[`COSTOUNITARIO${index}`]}</Text>
+                                        <Text style={styles.value}>{pdfData && pdfData[`CANTIDAD${index}`] && pdfData[`CANTIDAD${index}`]}</Text>
+                                        <Text style={styles.value}>{pdfData && pdfData[`PRODUCT${index}`] && pdfData[`PRODUCT${index}`]}</Text>
 
 
 

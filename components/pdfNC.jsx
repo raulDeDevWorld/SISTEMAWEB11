@@ -42,11 +42,17 @@ const styles = StyleSheet.create({
     },
     introImg: {
         width: "100%",
+        height: "100px",
+        display: "flex",
+        flexDirection: "row",
+        justifyContent:"center",
+        alignItems:"center"
     },
     logo: {
+        position:"absolute",
         height: "auto",
         width: "150px",
-        marginLeft: "35px"
+        marginLeft: "35px",
     },
     introItems: {
         width: "100%",
@@ -79,6 +85,7 @@ const styles = StyleSheet.create({
     },
     value: {
         width: "50%",
+        height: '12px',
         padding: "2px 5px 0px 5px ",
         border: "0.5px solid #294B98",
         color: "#000000",
@@ -86,12 +93,53 @@ const styles = StyleSheet.create({
         fontWeight: "100"
 
     },
+    noValue: {
+        width: "25%",
+        height: "12px",
+        padding: "2px 5px 0px 5px ",
+        border: "none",
+        color: "#ffffff",
+        fontSize: "8px",
+        fontWeight: "100",
+        backgroundColor: "transparent",
+
+    },
+    noValueYellow: {
+        width: "25%",
+        height: "12px",
+        padding: "2px 5px 0px 5px ",
+        border: "0.5px solid orange",
+        color: "#ffffff",
+        fontSize: "8px",
+        fontWeight: "100",
+        backgroundColor: "orange",
+    },
+
+
+    noValueYellowCenter: {
+        width: "25%",
+        height: "12px",
+        padding: "2px 5px 0px 5px ",
+        border: "0.5px solid orange",
+        color: "#ffffff",
+        fontSize: "8px",
+        fontWeight: "100",
+        textAlign: 'center',
+        backgroundColor: "orange",
+    },
+
+
     viewKeyValueTwo: {
         width: "100%",
         display: "flex",
         flexDirection: "row"
     },
-
+    viewKeyValueTwoYellow: {
+        width: "100%",
+        display: "flex",
+        flexDirection: "row",
+        margin: "16px 0 0 0",
+    },
 
 
 })
@@ -126,11 +174,11 @@ const PDFView = () => {
                             <View style={styles.introItems}>
                                 <View style={styles.introViewKeyValue}>
                                     <Text style={styles.key}>COTIZACIÓN No</Text>
-                                    <Text style={styles.value}>{pdfData && pdfData["COTIZACIÓN No"] && pdfData["COTIZACIÓN No"]}</Text>
+                                    <Text style={styles.value}>{pdfData && pdfData["NC-COTIZACIÓN No"] && pdfData["NC-COTIZACIÓN No"]}</Text>
                                 </View>
                                 <View style={styles.introViewKeyValue}>
                                     <Text style={styles.key}>FECHA</Text>
-                                    <Text style={styles.value}>{pdfData && pdfData["FECHA"] && pdfData["FECHA"]}</Text>
+                                    <Text style={styles.value}>{pdfData && pdfData["NC-FECHA"] && pdfData["NC-FECHA"]}</Text>
                                 </View>
                             </View>
                         </View>
@@ -226,7 +274,7 @@ const PDFView = () => {
                                         <Text style={styles.value}>{pdfData && pdfData[`NC-DETALLE${index}`] && pdfData[`NC-DETALLE${index}`]}</Text>
                                         <Text style={styles.value}>{pdfData && pdfData[`COSTOUNITARIO${index}`] && pdfData[`COSTOUNITARIO${index}`]}</Text>
                                         <Text style={styles.value}>{pdfData && pdfData[`CANTIDAD${index}`] && pdfData[`CANTIDAD${index}`]}</Text>
-                                        <Text style={styles.value}>{pdfData && pdfData[`PRODUCTOTOTAL${index}`] && pdfData[`PRODUCTOTOTAL${index}`]}</Text>
+                                        <Text style={styles.value}>{pdfData && pdfData[`PRODUCT${index}`] && pdfData[`PRODUCT${index}`]}</Text>
                                         <Text style={styles.value}>{pdfData && pdfData[`NC-FACTURA${index}`] && pdfData[`NC-FACTURA${index}`]}</Text>
                                         <Text style={styles.value}>{pdfData && pdfData[`NC-OBSERVACION${index}`] && pdfData[`NC-OBSERVACION${index}`]}</Text>
                                     </View>
@@ -235,7 +283,14 @@ const PDFView = () => {
                                 )
                             })
                         }
-
+                        <View style={styles.viewKeyValueTwo}>
+                            <Text style={styles.noValueYellow}></Text>
+                            <Text style={styles.noValueYellowCenter}>TOTAL</Text>
+                            <Text style={styles.noValueYellow}></Text>
+                            <Text style={styles.noValueYellow}>{pdfData && pdfData[`PRODUCTOTOTAL`] && pdfData[`PRODUCTOTOTAL`]}</Text>
+                            <Text style={styles.noValue}></Text>
+                            <Text style={styles.noValue}></Text>
+                        </View>
 
 
                         <Text style={styles.subtitle}>DATOS BANCARIOS</Text>
