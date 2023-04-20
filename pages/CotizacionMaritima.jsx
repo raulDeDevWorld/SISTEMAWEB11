@@ -161,6 +161,19 @@ function CotizacionMaritima() {
         return object
     }
 
+
+
+function handlerPdfButton() {
+        setUserPdfData({ ...pdfData, tarifa, otrosGastos, incluye, excluye })
+        let object = {
+            CotizacionTerrestre: userDB.CotizacionMaritima ? userDB.CotizacionMaritima + 1 : 1
+        }
+        writeUserData('/', object, setUserSuccess)
+    }
+
+
+
+
     function handleFilterChange(e) {
         setFilter(e.target.value)
     }
@@ -545,7 +558,7 @@ function CotizacionMaritima() {
                     </div>
                 </form>
             </div>
-            <InvoicePDF />
+            <InvoicePDF click={handlerPDFButtom}/>
 
             <br />
             <br />
