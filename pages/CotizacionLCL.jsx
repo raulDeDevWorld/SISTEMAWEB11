@@ -207,16 +207,20 @@ function CotizacionTerrestre() {
 
 
     useEffect(() => {
-        let cotizacionNo = userDB.CotizacionTerrestre ? `${userDB.CotizacionTerrestre + 1 < 10 ? '00' : ''}${userDB.CotizacionTerrestre + 1 > 9 && userDB.CotizacionTerrestre + 1 < 100 ? '0' : ''}${userDB.CotizacionTerrestre + 1}/${new Date().getFullYear().toString().substring(2, 4)}` : `001/${new Date().getFullYear().toString().substring(2, 4)}`
+        let cotizacionNo = userDB.CotizacionTerrestre
+            ? `${userDB.NotaDeConbranza + 1 < 10 ? '00' : ''}${userDB.NotaDeConbranza + 1 > 9
+                && userDB.NotaDeConbranza + 1 < 100 ? '0' : ''}${userDB.NotaDeConbranza + 1}/${new Date().getFullYear().toString().substring(2, 4)}` : `001/${new Date().getFullYear().toString().substring(2, 4)}`
         let date = getDayMonthYear()
 
-        setUserPdfData({
+
+        userDB !== '' && setUserPdfData({
             ...pdfData,
-            ["NC-COTIZACIÓN No"]: cotizacionNo,
-            ["NC-FECHA"]: date
+            ["CT-COTIZACIÓN No"]: cotizacionNo,
+            ["CT-FECHA"]: date
         })
 
-    }, []);
+    }, [userDB, tarifa]);
+
 
 
     return (
