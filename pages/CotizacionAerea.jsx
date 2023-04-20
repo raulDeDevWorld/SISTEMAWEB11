@@ -195,16 +195,20 @@ function CotizacionTerrestre() {
         console.log(f)
     }
     useEffect(() => {
-        let cotizacionNo = userDB.CotizacionTerrestre ? `${userDB.CotizacionTerrestre + 1 < 10 ? '00' : ''}${userDB.CotizacionTerrestre + 1 > 9 && userDB.CotizacionTerrestre + 1 < 100 ? '0' : ''}${userDB.CotizacionTerrestre + 1}/${new Date().getFullYear().toString().substring(2, 4)}` : `001/${new Date().getFullYear().toString().substring(2, 4)}`
+        let cotizacionNo = userDB.CotizacionTerrestre
+            ? `${userDB.CotizacionAerea + 1 < 10 ? '00' : ''}${userDB.CotizacionAerea + 1 > 9
+                && userDB.CotizacionAerea + 1 < 100 ? '0' : ''}${userDB.CotizacionAerea + 1}/${new Date().getFullYear().toString().substring(2, 4)}` : `001/${new Date().getFullYear().toString().substring(2, 4)}`
         let date = getDayMonthYear()
 
-        setUserPdfData({
+
+        userDB !== '' && setUserPdfData({
             ...pdfData,
             ["CA-COTIZACIÓN No"]: cotizacionNo,
             ["CA-FECHA"]: date
         })
 
-    }, []);
+    }, [userDB, tarifa]);
+
     return (
         <Layout>
             <div className={style.container}>
