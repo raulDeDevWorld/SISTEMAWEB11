@@ -215,8 +215,8 @@ function CotizacionTerrestre() {
 
         userDB !== '' && setUserPdfData({
             ...pdfData,
-            ["CT-COTIZACIÓN No"]: cotizacionNo,
-            ["CT-FECHA"]: date
+            ["NC-COTIZACION No"]: cotizacionNo,
+            ["NC-FECHA"]: date
         })
 
     }, [userDB, tarifa]);
@@ -241,7 +241,7 @@ function CotizacionTerrestre() {
                         <div className={style.firstItems}>
                             <div>
                                 <label htmlFor="">NOTA DE COBRANZA NO</label>
-                                <input type="text" name={"NOTA DE COBRANZA NO"} onChange={handleEventChange} defaultValue={pdfData["NC-COTIZACIÓN No"] && pdfData["NC-COTIZACIÓN No"]}/>
+                                <input type="text" name={"NOTA DE COBRANZA NO"} onChange={handleEventChange} defaultValue={pdfData["NC-COTIZACION No"] && pdfData["NC-COTIZACION No"]}/>
                             </div>
                             <div>
                                 <label htmlFor="">FECHA</label>
