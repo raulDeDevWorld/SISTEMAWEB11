@@ -172,7 +172,13 @@ function CotizacionTerrestre() {
 
         setUserPdfData({ ...pdfData, tarifa, otrosGastos, incluye, excluye })
     }
-
+function handlerPdfButton() {
+        setUserPdfData({ ...pdfData, tarifa, otrosGastos, incluye, excluye })
+        let object = {
+            CotizacionTerrestre: userDB.CotizacionAerea ? userDB.CotizacionAerea + 1 : 1
+        }
+        writeUserData('/', object, setUserSuccess)
+    }
     function handlerFilterButton(e) {
 
         e.preventDefault()
@@ -470,7 +476,7 @@ function CotizacionTerrestre() {
                 </form>
             </div>
 
-            <InvoicePDF click={handlerPDFTester} />
+            <InvoicePDF click={handlerPDFButtom} />
 
             <br />
             <br />
