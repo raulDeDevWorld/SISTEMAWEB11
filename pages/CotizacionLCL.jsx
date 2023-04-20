@@ -94,32 +94,12 @@ function CotizacionTerrestre() {
     }
 
     function handlerPdfButton() {
-
+        setUserPdfData({ ...pdfData, tarifa, otrosGastos, incluye, excluye })
         let object = {
-            nombre: pdfData['NC-NOMBRE'],
-            correo: pdfData['NC-CORREO'],
-            empresa: pdfData['NC-NOMBRE'],
-            telefono: pdfData['NC-CORREO'],
-            cargo: pdfData['NC-NOMBRE'],
-            ciudad: pdfData['NC-CORREO'],
-
-            banco: pdfData['NC-BANCO'] ? pdfData['NC-BANCO'] : null,
-            codigo: pdfData['NC-CODIGO SWIFT'] ? pdfData['NC-CODIGO SWIFT'] : null,
-            direcccionDeBanco: pdfData['NC-DIRECCION DE BANCO'] ? pdfData['NC-DIRECCION DE BANCO'] : null,
-            nombre2: pdfData['NC-NOMBRE2'] ? pdfData['NC-NOMBRE2'] : null,
-            cuentaBS: pdfData['NC-NUMERO DE CUENTA EN BS'] ? pdfData['NC-NUMERO DE CUENTA EN BS'] : null,
-            cuentaUSD: pdfData['NC-NUMERO DE CUENTA EN USD'] ? pdfData['NC-NUMERO DE CUENTA EN USD'] : null,
-            tipoDeCuenta: pdfData['NC-TIPO DE CUENTA'] ? pdfData['NC-TIPO DE CUENTA'] : null
+            NotaDeCobranza: userDB.NotaDeCobranza ? userDB.NotaDeCobranza + 1 : 1
         }
-
-        pdfData['NC-NOMBRE'] && pdfData['NC-CORREO'] && pdfData['NC-EMPRESA'] && pdfData['NC-TELEFONO'] && pdfData['NC-CARGO'] && pdfData['NC-CIUDAD']
-            ? writeUserData(`users/${object.telefono}`, object, setUserSuccess)
-            : ''
-
-        router.push("/PdfView")
+        writeUserData('/', object, setUserSuccess)
     }
-
-
 
     function handlerCalc(e, index) {
 
@@ -395,7 +375,7 @@ function CotizacionTerrestre() {
             </div>
     
 
-            <InvoicePDF />
+            <InvoicePDF click{handlerPdfButton} />
 
             <br />
             <br />
