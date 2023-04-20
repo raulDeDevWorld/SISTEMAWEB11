@@ -90,9 +90,7 @@ function CotizacionTerrestre() {
             setExcluye(newExcluye)
         }
     }
-    function handlerPdfButton() {
-        router.push("/PdfView")
-    }
+    
 
     function handlerCalc(e, index) {
 
@@ -476,7 +474,7 @@ function handlerPdfButton() {
                 </form>
             </div>
 
-            <InvoicePDF click={handlerPDFButtom} />
+            <InvoicePDF click={handlerPdfButtom} />
 
             <br />
             <br />
