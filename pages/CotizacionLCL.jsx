@@ -375,7 +375,7 @@ function CotizacionTerrestre() {
             </div>
     
 
-            <InvoicePDF click{handlerPdfButton} />
+            <InvoicePDF click={handlerPdfButton} />
 
             <br />
             <br />
