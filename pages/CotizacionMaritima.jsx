@@ -5,6 +5,7 @@ import { useUser } from '../context/Context'
 import { WithAuth } from '../HOCs/WithAuth'
 import Layout from '../layout/Layout'
 import Button from '../components/Button'
+import { writeUserData } from '../firebase/utils';
 import { getDayMonthYear } from "../utils/Fecha";
 
 
